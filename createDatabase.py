@@ -19,13 +19,15 @@ connection.execute('''CREATE TABLE CITY
                       );''')
 connection.execute('''CREATE TABLE SOFTWARECOMPANY
                       (username INT PRIMARY KEY,
-                       password TEXT NOT NULL
-					   website TEXT NOT NULL
-					   name TEXT NOT NULL
-					   email TEXT NOT NULL
-					   telephone TEXT NOT NULL
-					   address TEXT NOT NULL
-					   sessionId INT NOT NULL
+                       password TEXT NOT NULL,
+					   website TEXT NOT NULL,
+					   name TEXT NOT NULL,
+					   email TEXT NOT NULL,
+					   telephone TEXT NOT NULL,
+					   address TEXT NOT NULL,
+					   sessionId INT NOT NULL,
+                       cityNo INT NOT NULL,
+                       FOREIGN KEY (cityNo) REFERENCES CITY(cityCode) ON UPDATE CASCADE
                       );''')
 connection.execute('''CREATE TABLE INTERNSHIPPOSITION
                       (id INT PRIMARY KEY,
@@ -33,6 +35,8 @@ connection.execute('''CREATE TABLE INTERNSHIPPOSITION
                        details TEXT NOT NULL,
                        expectations TEXT,
 					   deadline TEXT NOT NULL,
+                       companyUsername TEXT NOT NULL,
+                       FOREIGN KEY (companyUsername) REFERENCES SOFTWARECOMPANY(username) ON UPDATE CASCADE
                       );''')
 
 # Insert the values to tables
