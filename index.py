@@ -11,19 +11,9 @@ if 'login' in form and 'username' in form.keys() and 'pwd' in form.keys():
    print ("Login successful with username = {}, password = {}."
          .format(cgi.escape(form['username'].value),cgi.escape(form['pwd'].value)))
    print("login success")
-   redirectURL = "login.html"
-   print('<html>')
-   print('  <head>')
-   print('    <meta http-equiv="refresh" content="0;url='+str(redirectURL)+'" />') 
-   print('  </head>')
-   print('</html>')
+   htmlMethods.redirect("login.html")
 elif 'register' in form:
-   redirectURL = "register.html"
-   print('<html>')
-   print('  <head>')
-   print('    <meta http-equiv="refresh" content="0;url='+str(redirectURL)+'" />') 
-   print('  </head>')
-   print('</html>')
+   htmlMethods.redirect("register.html")
 
 
 """
