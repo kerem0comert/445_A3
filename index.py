@@ -14,29 +14,27 @@ def printHeader( title ):
 <head><title>%s</title></head>
 <body>""" % title) 
 printHeader("Kalkanli Internship System")  
-#print ("<h1>Welcome to the Kalkanli Internship Sytem!</h1>")
-#print("""<form method='post' action='index.py'>
-#         <input type='text' name='username'/>
-#         <input type='text' name='password'/>
-#         <input type='submit' value = 'Login' name = 'login'/>
-#         <input type='submit' value = "I don't have an account" name = 'register'/>
-#         </form>
-#         """)  
+
 
 form = cgi.FieldStorage()
 
-if 'username' in form.keys() and 'pwd' in form.keys():
+if 'login' in form and 'username' in form.keys() and 'pwd' in form.keys():
    print ("Login successful with username = {}, password = {}."
          .format(cgi.escape(form['username'].value),cgi.escape(form['pwd'].value)))
    print("login success")
-   redirectURL = localhost/445_A3/login.html
+   redirectURL = "login.html"
    print('<html>')
    print('  <head>')
    print('    <meta http-equiv="refresh" content="0;url='+str(redirectURL)+'" />') 
    print('  </head>')
    print('</html>')
 elif 'register' in form:
-   print("register")
+   redirectURL = "register.html"
+   print('<html>')
+   print('  <head>')
+   print('    <meta http-equiv="refresh" content="0;url='+str(redirectURL)+'" />') 
+   print('  </head>')
+   print('</html>')
 
 
 """
