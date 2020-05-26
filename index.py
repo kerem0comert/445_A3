@@ -13,23 +13,48 @@ def printHeader( title ):
 <html xmlns = "http://www.w3.org/1999/xhtml">
 <head><title>%s</title></head>
 <body>""" % title) 
-printHeader("QUERY_STRING example")  
-print ("<h1>Name/Value Pairs</h1>")  
+printHeader("Kalkanli Internship System")  
+#print ("<h1>Welcome to the Kalkanli Internship Sytem!</h1>")
+#print("""<form method='post' action='index.py'>
+#         <input type='text' name='username'/>
+#         <input type='text' name='password'/>
+#         <input type='submit' value = 'Login' name = 'login'/>
+#         <input type='submit' value = "I don't have an account" name = 'register'/>
+#         </form>
+#         """)  
+
+form = cgi.FieldStorage()
+
+if 'username' in form.keys() and 'pwd' in form.keys():
+   print ("Login successful with username = {}, password = {}."
+         .format(cgi.escape(form['username'].value),cgi.escape(form['pwd'].value)))
+   print("login success")
+   redirectURL = localhost/445_A3/login.html
+   print('<html>')
+   print('  <head>')
+   print('    <meta http-equiv="refresh" content="0;url='+str(redirectURL)+'" />') 
+   print('  </head>')
+   print('</html>')
+elif 'register' in form:
+   print("register")
+
+
+"""
 query = os.environ["QUERY_STRING"]    
 if len(query) == 0:  
-   print ("""<p><br /> 
+   print (<p><br /> 
       Please add some name-value pairs to the URL above. 
       Or try 
       <a href = "index.py?name=Veronica&age=23">this</a>. 
-      </p>""")  
+      </p>)  
 else:     
-   print ("""<p style = "font-style: italic"> 
-      The query string is '%s'.</p>""" % cgi.escape(query))  
+   print (<p style = "font-style: italic"> 
+      The query string is '%s'.</p> % cgi.escape(query))  
    pairs = cgi.parse_qs(query)  
      
    for key, value in pairs.items():  
       print ("<p>You set '%s' to value %s</p>" % (key, value))               
-print ("</body></html>")
+print ("</body></html>")"""
 
 
 
