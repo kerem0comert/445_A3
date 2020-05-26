@@ -7,4 +7,4 @@ if "HTTP_COOKIE" in os.environ:
     htmlMethods.printHeader("index!")
     htmlMethods.endBodyAndHtml()
 else:
-    htmlMethods.redirect("login.html")
+    htmlMethods.redirect("login.py")
