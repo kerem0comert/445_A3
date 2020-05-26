@@ -2,9 +2,9 @@
 
 import os
 import cgi
-from printHeader import printHeader
+from htmlMethods import htmlMethods
 
-printHeader.printHeader("KIS - Register")  
+htmlMethods.printHeader("KIS - Register")
 
 form = cgi.FieldStorage()
 

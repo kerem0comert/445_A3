@@ -2,9 +2,9 @@
 
 import os
 import cgi
-from printHeader import printHeader
+from htmlMethods import htmlMethods
 
-printHeader.printHeader("Kalkanli Internship System")  
+htmlMethods.printHeader("Kalkanli Internship System")
 form = cgi.FieldStorage()
 
 if 'login' in form and 'username' in form.keys() and 'pwd' in form.keys():

@@ -1,4 +1,4 @@
-class printHeader():
+class htmlMethods():
     @staticmethod
     def printHeader( title ):
         print ("""Content-type: text/html

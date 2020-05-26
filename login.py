@@ -1,9 +1,9 @@
 #!C:\Program Files\Python36\python.exe
 import os
 import cgi
-from printHeader import printHeader
+from htmlMethods import htmlMethods
 
-printHeader.printHeader("KIS Login")  
+htmlMethods.printHeader("KIS Login")
 
 
 form = cgi.FieldStorage()
