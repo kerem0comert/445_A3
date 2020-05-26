@@ -13,9 +13,9 @@ if not form or not 'login' in form:
    print("""<p>Welcome to Kalkanli Internship System!</p>
         <form method='POST' action='login.py'>
             <label for="username">Username:</label>
-            <input type='text' name='username'/><br><br>
+            <input type='text' name='username' required/><br><br>
             <label for="pwd">Password:</label>
-            <input type='password' name='pwd' /><br><br>
+            <input type='password' name='pwd' required/><br><br>
             <input type='submit' value='Login' name='login' />
         </form>
         <input type="submit" value="I don't have an account" onclick="window.location='register.py';"/>""")
