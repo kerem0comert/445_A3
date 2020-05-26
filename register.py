@@ -44,4 +44,9 @@ else:
         print("""<input type="submit" value="Go back" onclick="window.location='register.py';"/>""")
         htmlMethods.endBodyAndHtml()
     else:
-        htmlMethods.redirect("index.py")
+        htmlMethods.printHeader("Register Successful!")
+        print("<p>You have registered successfully!</p>")
+        print("<p>What do you want now?</p>")
+        print("""<input type="submit" value="Main Page" onclick="window.location='index.py';"/>""")
+        print("""<input type="submit" value="Login" onclick="window.location='login.py';"/>""")
+        htmlMethods.endBodyAndHtml()
