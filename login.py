@@ -32,9 +32,6 @@ else:
       else:
          cookie = Cookie.SimpleCookie()
          sessionID = random.randint(1,1000000000)
-         cookie["session"] = sessionID
-         cookie["session"]["domain"] = "localhost"
-         cookie["session"]["path"] = "/"
          isLoginNotSuccessful = Database().updateSessionID(form["username"].value, sessionID)
          if isLoginNotSuccessful:
             htmlMethods.printHeader("Login Failed!")
@@ -43,6 +40,9 @@ else:
             print("""<input type="submit" value="Go back" onclick="window.location='login.py';"/>""")
             htmlMethods.endBodyAndHtml()
          else:
+            cookie["session"] = sessionID
+            cookie["session"]["domain"] = "localhost"
+            cookie["session"]["path"] = "/"
             session_cookie = cookie.output().replace("Set-Cookie: ", "")
             htmlMethods.printHeader("Login Successful!")
             print ("<script>")

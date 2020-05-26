@@ -29,7 +29,6 @@ class Database():
     
     def updateSessionID(self, username, sessionId):
         try:
-
             self.db.execute("UPDATE SOFTWARECOMPANY SET sessionId = ? WHERE username = ?", (sessionId,username,))
             self.db.commit()
             return 0
