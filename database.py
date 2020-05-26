@@ -9,10 +9,13 @@ class Database():
 
     def login(self, username, password):
         dbCursor = self.db.cursor()
-        dbCursor.execute("SELECT * FROM SOFTWARECOMPANY WHERE username = ? AND password = ?", (username,password,))
+        dbCursor.execute("SELECT sessionId FROM SOFTWARECOMPANY WHERE username = ? AND password = ?", (username,password,))
         queryResult = dbCursor.fetchall()
         dbCursor.close()
-        return queryResult
+        try:
+            queryTuple = queryResult[0]
+            return queryTuple[0]
+        except: return 0
 
     def register(self, insertDetails): # Burda bir yanlis yapmisim address yerinde city olmasi lazim duzelticem JOIN YAPILMALI****************************
         # insertDetails -> (username,password,website,name,email,telephone,address,sessionId)

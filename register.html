@@ -1,14 +1,12 @@
-<html>
-    <head>
-        <title>Registration Form</title>
-    </head>
+<?xml version = "1.0" encoding = "UTF-8"?
+<!DOCTYPE html PUBLIC
+    "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "DTD/xhtml1-strict.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml">
+    <head><title>Register</title></head>
     <body>
         <p>Enter username and password: </p>
         <form method='POST' action='register.py'>
-            <div class="alert">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                This is an alert box.
-              </div>
             <label for="username">Username:</label>
             <input type='text' name='username' required/><br><br>
             <label for="pwd">Password:</label>
@@ -26,7 +24,7 @@
             <label for="postalAddress">Postal Address:</label>
             <input type='text' name='postalAddress' required/><br><br> 
             <input type='submit' value='Register' name='register' />
-            <input type='submit' value="Already have an account?" name='login' />
         </form>
+        <input type="submit" value="Already have an account?" onclick="window.location='login.html';"/>
     </body>
 </html>
