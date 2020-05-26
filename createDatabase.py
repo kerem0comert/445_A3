@@ -18,7 +18,7 @@ connection.execute('''CREATE TABLE CITY
                        cityName TEXT NOT NULL
                       );''')
 connection.execute('''CREATE TABLE SOFTWARECOMPANY
-                      (username INT PRIMARY KEY,
+                      (username TEXT PRIMARY KEY,
                        password TEXT NOT NULL,
 					   website TEXT NOT NULL,
 					   name TEXT NOT NULL,

@@ -5,7 +5,6 @@ from htmlMethods import *
 from database import *
 
 form = cgi.FieldStorage()
-dbConnection = Database()
 
 if not form or not 'login' in form:
    htmlMethods.printHeader("Login")
@@ -21,11 +20,13 @@ if not form or not 'login' in form:
    htmlMethods.endBodyAndHtml()
 else:
    if 'login' in form and 'username' in form.keys() and 'pwd' in form.keys():
-      sessionID = dbConnection.login(form["username"].value, form["pwd"].value)
+      sessionID = Database().login(form["username"].value, form["pwd"].value)
       if not sessionID:
          htmlMethods.printHeader("Login Failed!")
          print("<p>Login Failed!</p>")
          print("<p>Incorrect username and password</p>")
          print("""<input type="submit" value="Go back" onclick="window.location='login.py';"/>""")
          htmlMethods.endBodyAndHtml()
+      else:
+         htmlMethods.redirect("index.py")
   

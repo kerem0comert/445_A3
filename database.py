@@ -17,14 +17,14 @@ class Database():
             return queryTuple[0]
         except: return 0
 
-    def register(self, insertDetails): # Burda bir yanlis yapmisim address yerinde city olmasi lazim duzelticem JOIN YAPILMALI****************************
-        # insertDetails -> (username,password,website,name,email,telephone,address,sessionId)
+    def register(self, insertDetails):
+        # insertDetails -> [username, pwd, companyName, email, telephone, website, city, address]
         try:
-            self.db.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId) 
-                            VALUES (CURRENT_DATE, ?, ?, ?, ?, ?, ?, ?, ?);''', (insertDetails[0],insertDetails[1],insertDetails[2],insertDetails[3],insertDetails[4],insertDetails[5],insertDetails[6],insertDetails[7],))
+            self.db.execute('''INSERT INTO SOFTWARECOMPANY (username,password,name,email,telephone,website,cityNo,address,sessionId) 
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?);''', (insertDetails[0],insertDetails[1],insertDetails[2],insertDetails[3],insertDetails[4],int(insertDetails[5]),insertDetails[6], -1,))
             self.db.commit()
             return 0
-        except: return 1 #Each company should have a unique name
+        except: return 1
     
     def postNewInternship(self, insertDetails):
         # insertDetails -> (id,name,details,name,expectations,deadline) 
