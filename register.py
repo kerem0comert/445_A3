@@ -8,7 +8,7 @@ form = cgi.FieldStorage()
 
 if not form or not 'register' in form:
     htmlMethods.printHeader("Register")
-    print("""<p>Enter username and password: </p>
+    print("""<p>Register to system</p>
         <form method='POST' action='register.py'>
             <label for="username">Username:</label>
             <input type='text' name='username' required/><br><br>
@@ -28,7 +28,9 @@ if not form or not 'register' in form:
             <input type='text' name='address' required/><br><br> 
             <input type='submit' value='Register' name='register' />
         </form>
-        <input type="submit" value="Already have an account?" onclick="window.location='login.py';"/>""")
+        <input type="submit" value="Already have an account?" onclick="window.location='login.py';"/><br><br>
+        <input type="submit" value="Main Page" onclick="window.location='index.py';"/>""")
+        
     htmlMethods.endBodyAndHtml()
 else:
     elementList = ["username", "pwd", "companyName", "email", "telephone", "website", "city", "address"]

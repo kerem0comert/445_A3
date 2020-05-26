@@ -10,7 +10,7 @@ form = cgi.FieldStorage()
 
 if not form or not 'login' in form:
    htmlMethods.printHeader("Login")
-   print("""<p>Welcome to Kalkanli Internship System!</p>
+   print("""<p>Login to system</p>
         <form method='POST' action='login.py'>
             <label for="username">Username:</label>
             <input type='text' name='username' required/><br><br>
@@ -18,7 +18,8 @@ if not form or not 'login' in form:
             <input type='password' name='pwd' required/><br><br>
             <input type='submit' value='Login' name='login' />
         </form>
-        <input type="submit" value="I don't have an account" onclick="window.location='register.py';"/>""")
+        <input type="submit" value="I don't have an account" onclick="window.location='register.py';"/><br><br>
+        <input type="submit" value="Main Page" onclick="window.location='index.py';"/>""")
    htmlMethods.endBodyAndHtml()
 else:
    if 'login' in form and 'username' in form.keys() and 'pwd' in form.keys():

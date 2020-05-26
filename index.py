@@ -3,8 +3,13 @@ import os
 import cgi
 from htmlMethods import htmlMethods
 
+htmlMethods.printHeader("North Cyprus SW Interns")
+print("""<p>Welcome to Kalkanli Internship System!</p>""")
+
 if "HTTP_COOKIE" in os.environ:
-    htmlMethods.printHeader("index!")
-    htmlMethods.endBodyAndHtml()
+    print("""<input type="submit" value="Log Out" onclick="window.alert("Not implemented yet!");"/>""")
 else:
-    htmlMethods.redirect("login.py")
+    print("""<input type="submit" value="Log In" onclick="window.location='login.py';"/>""")
+    print("""<input type="submit" value="Register" onclick="window.location='register.py';"/>""")
+
+htmlMethods.endBodyAndHtml()
