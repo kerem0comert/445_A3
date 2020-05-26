@@ -1,6 +1,7 @@
 #!C:\Program Files\Python36\python.exe
 import os
 import cgi
+
 from htmlMethods import htmlMethods
 from database import *
 
@@ -22,8 +23,15 @@ if not form or not 'register' in form:
             <input type='tel' name='telephone' required/><br><br>
             <label for="website">Website:</label>
             <input type='text' name='website' required/><br><br> 
-            <label for="city">City No:</label>
-            <input type='text' name='city' required/><br><br> 
+            <label for="cities">Select a city:</label>
+            <select name="cities">
+            <option value="1">Gazimagusa</option>
+            <option value="2">Girne</option>
+            <option value="3">Guzelyurt</option>
+            <option value="4">Iskele</option>
+            <option value="5">Lefke</option>
+            <option value="6">Lefkosa</option>
+            </select><br><br> 
             <label for="address">Address:</label>
             <input type='text' name='address' required/><br><br> 
             <input type='submit' value='Register' name='register' />
@@ -33,7 +41,7 @@ if not form or not 'register' in form:
         
     htmlMethods.endBodyAndHtml()
 else:
-    elementList = ["username", "pwd", "companyName", "email", "telephone", "website", "city", "address"]
+    elementList = ["username", "pwd", "companyName", "email", "telephone", "website", "cities", "address"]
     formList =[]
     for elementName in elementList:
         formList.append(form[elementName].value)
