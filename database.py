@@ -21,10 +21,11 @@ class Database():
         # insertDetails -> [username, pwd, companyName, email, telephone, website, city, address]
         try:
             self.db.execute('''INSERT INTO SOFTWARECOMPANY (username,password,name,email,telephone,website,cityNo,address,sessionId) 
-                            VALUES (?, ?, ?, ?, ?, ?, ?, ?);''', (insertDetails[0],insertDetails[1],insertDetails[2],insertDetails[3],insertDetails[4],int(insertDetails[5]),insertDetails[6], -1,))
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);''', (insertDetails[0],insertDetails[1],insertDetails[2],insertDetails[3],insertDetails[4],insertDetails[5],int(insertDetails[6]), insertDetails[7], -1,))
             self.db.commit()
             return 0
-        except: return 1
+        except:
+            return 1
     
     def postNewInternship(self, insertDetails):
         # insertDetails -> (id,name,details,name,expectations,deadline) 
