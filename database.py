@@ -27,6 +27,15 @@ class Database():
         except:
             return 1
     
+    def updateSessionID(self, username, sessionId):
+        try:
+
+            self.db.execute("UPDATE SOFTWARECOMPANY SET sessionId = ? WHERE username = ?", (sessionId,username,))
+            self.db.commit()
+            return 0
+        except:
+            return 1
+
     def postNewInternship(self, insertDetails):
         # insertDetails -> (id,name,details,name,expectations,deadline) 
         try:
