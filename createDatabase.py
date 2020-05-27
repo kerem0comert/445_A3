@@ -35,9 +35,10 @@ connection.execute('''CREATE TABLE INTERNSHIPPOSITION
                        details TEXT NOT NULL,
                        expectations TEXT,
 					   deadline TEXT NOT NULL,
-                       companyUsername TEXT NOT NULL,
-                       FOREIGN KEY (companyUsername) REFERENCES SOFTWARECOMPANY(username) ON UPDATE CASCADE
-                      );''')
+                       companyUsername TEXT NOT NULL
+                       );''')
+                       #FOREIGN KEY (companyUsername) REFERENCES SOFTWARECOMPANY(username) ON UPDATE CASCADE
+                      
 
 # Insert the values to tables
 connection.execute('''INSERT INTO CITY (cityCode,cityName) VALUES (1, 'Gazimagusa');''')
@@ -46,5 +47,7 @@ connection.execute('''INSERT INTO CITY (cityCode,cityName) VALUES (3, 'Guzelyurt
 connection.execute('''INSERT INTO CITY (cityCode,cityName) VALUES (4, 'Iskele');''')
 connection.execute('''INSERT INTO CITY (cityCode,cityName) VALUES (5, 'Lefke');''')
 connection.execute('''INSERT INTO CITY (cityCode,cityName) VALUES (6, 'Lefkosa');''')
+connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (1, 'Test Position', 'nodetail', 'graudate', 'tomorrow', 1234);''')
+connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (2, 'Test Position2', 'very detailed', 'graudate', 'tomorrow', 1234);''')
 connection.commit()
 connection.close()
