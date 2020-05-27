@@ -9,32 +9,14 @@ form = cgi.FieldStorage()
 
 htmlMethods.printHeader("PreviousPositions")
 cityCount = Database().findCityCount()
-cityList = Database().getCityNames()
+cityList = Database().getCities()
 positionList = Database().ListInternshipPositionsBycity()
 
 counter = 0
-print("""<head>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
-</head>""")
-while(counter < cityCount):
+htmlMethods.printTableHeader()
+for city in cityList:
     checkFlag = 0
-    cityName = cityList[counter][0]
+    cityName = city[1]
     print("""
     <body>
 
@@ -59,7 +41,7 @@ while(counter < cityCount):
             print("""<td>%s</td>""" % position[4])
             print("""<tr>""")
             checkFlag = 1
-    if(checkFlag<1):
+    if not checkFlag:
         print("""<tr>""")
         print("""<td>No Position Available</td>""" )
         print("""<td> </td>""" )
@@ -71,7 +53,6 @@ while(counter < cityCount):
     </table>
 
     </body>""")
-    counter+=1
             
 print("""
     <input type="submit" value="Main Page" onclick="window.location='index.py';"/>""")
