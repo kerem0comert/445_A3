@@ -6,6 +6,7 @@ from htmlMethods import htmlMethods
 from database import *
 
 form = cgi.FieldStorage()
+cityList = Database().getCities()
 
 if not form or not 'register' in form:
     htmlMethods.printHeader("Register")
@@ -24,13 +25,10 @@ if not form or not 'register' in form:
             <label for="website">Website:</label>
             <input type='text' name='website' required/><br><br> 
             <label for="cities">Select a city:</label>
-            <select name="cities">
-            <option value="1">Gazimagusa</option>
-            <option value="2">Girne</option>
-            <option value="3">Guzelyurt</option>
-            <option value="4">Iskele</option>
-            <option value="5">Lefke</option>
-            <option value="6">Lefkosa</option>
+            <select name="cities" id="cities">""")
+    for city in cityList:
+        print("""<option value="{}">{}</option>""".format(city[0], city[1]))
+    print("""
             </select><br><br> 
             <label for="address">Address:</label>
             <input type='text' name='address' required/><br><br> 

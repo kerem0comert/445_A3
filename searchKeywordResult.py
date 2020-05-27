@@ -9,7 +9,7 @@ form = cgi.FieldStorage()
 keywordToSearch = "Test Position"
 htmlMethods.printHeader("PreviousPositions")
 cityCount = Database().findCityCount()
-cityList = Database().getCities()
+cityList = Database().getCityNames()
 positionList = Database().searchKeywordInternshipPositions(keywordToSearch)
 
 counter = 0

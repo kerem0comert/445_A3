@@ -9,7 +9,7 @@ form = cgi.FieldStorage()
 
 htmlMethods.printHeader("PreviousPositions")
 cityCount = Database().findCityCount()
-cityList = Database().getCities()
+cityList = Database().getCityNames()
 positionList = Database().ListInternshipPositionsBycity()
 
 counter = 0

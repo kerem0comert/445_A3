@@ -96,6 +96,13 @@ class Database():
 
     def getCities(self):
         dbCursor = self.db.cursor()
+        dbCursor.execute("SELECT * FROM CITY")
+        queryResult = dbCursor.fetchall()
+        dbCursor.close()
+        return queryResult
+
+    def getCityNames(self):
+        dbCursor = self.db.cursor()
         dbCursor.execute("SELECT cityName FROM CITY")
         queryResult = dbCursor.fetchall()
         dbCursor.close()
