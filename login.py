@@ -43,7 +43,6 @@ else:
          else:
             cookie["session"] = sessionID
             cookie["session"]["domain"] = "localhost"
-            cookie["session"]["path"] = "/"
             session_cookie = cookie.output().replace("Set-Cookie: ", "")
             htmlMethods.printHeader("Login Successful!")
             print ("<script>")
