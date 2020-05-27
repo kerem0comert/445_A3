@@ -92,8 +92,26 @@ class Database():
         queryResult = dbCursor.fetchall()
         dbCursor.close()
         return queryResult
-
-
     
+    def findCityCount(self): # NEED TO SPLIT THIS INTO SEPERATE QUERIES FOR EACH CITIES*****************************
+        dbCursor = self.db.cursor()
+        dbCursor.execute("SELECT COUNT ( DISTINCT cityCode ), cityName FROM CITY")
+        queryResult = dbCursor.fetchall()
+        dbCursor.close()
+        return queryResult
+
+    def findInternshipCity(self): # NEED TO SPLIT THIS INTO SEPERATE QUERIES FOR EACH CITIES*****************************
+        dbCursor = self.db.cursor()
+        dbCursor.execute("SELECT DISTINCT c.cityName FROM INTERNSHIPPOSITION i, SOFTWARECOMPANY s, CITY c WHERE i.companyUsername=s.username AND c.cityCode=s.CityNo")
+        queryResult = dbCursor.fetchall()
+        dbCursor.close()
+        return queryResult
+
+    def ListInternshipPositionsBycity(self): # NEED TO SPLIT THIS INTO SEPERATE QUERIES FOR EACH CITIES*****************************
+        dbCursor = self.db.cursor()
+        dbCursor.execute("SELECT s.name, i.name, i.details, i.expectations, i.deadline, c.cityName FROM INTERNSHIPPOSITION i, SOFTWARECOMPANY s, CITY c WHERE i.companyUsername=s.username AND c.cityCode=s.CityNo")
+        queryResult = dbCursor.fetchall()
+        dbCursor.close()
+        return queryResult
 
     
