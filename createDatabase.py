@@ -35,10 +35,9 @@ connection.execute('''CREATE TABLE INTERNSHIPPOSITION
                        details TEXT NOT NULL,
                        expectations TEXT,
 					   deadline TEXT NOT NULL,
-                       companyUsername TEXT NOT NULL
+                       companyUsername TEXT NOT NULL,
+                       FOREIGN KEY (companyUsername) REFERENCES SOFTWARECOMPANY(username) ON UPDATE CASCADE
                        );''')
-                       #FOREIGN KEY (companyUsername) REFERENCES SOFTWARECOMPANY(username) ON UPDATE CASCADE
-                      
 
 # Insert the values to tables
 connection.execute('''INSERT INTO CITY (cityCode,cityName) VALUES (1, 'Gazimagusa');''')
