@@ -19,6 +19,7 @@ else:
     print("""<input type="submit" value="List All Active Internship Positions" onclick="window.location='listActivePositions.py';"/>""")
 
 print("</body>")
+# logout script has been got from https://stackoverflow.com/questions/179355/clearing-all-cookies-with-javascript
 print("""<script>  
     function logout() {
         var cookies = document.cookie.split("; ");
