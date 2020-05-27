@@ -72,9 +72,9 @@ class Database():
         dbCursor.close()
         return queryResult
     
-    def searchKeywordInternshipPositions(self, keyword): 
+    def searchKeywordInternshipPositions(self, keyword): #Test icin ? yerine test position yazdim normalde keyword aramali
         dbCursor = self.db.cursor()
-        dbCursor.execute("SELECT name,details,expectations,deadline FROM INTERNSHIPPOSITION WHERE  details LIKE % OR expectations LIKE % OR name LIKE % ORDER BY deadline DESC",(keyword),)
+        dbCursor.execute("SELECT s.name, i.name, i.details, i.expectations, i.deadline, c.cityName FROM INTERNSHIPPOSITION i, SOFTWARECOMPANY s, CITY c WHERE i.companyUsername=s.username AND c.cityCode=s.CityNo AND (i.details LIKE 'Test Position1' OR i.expectations LIKE 'Test Position' OR i.name LIKE 'Test Position') ORDER BY deadline DESC")
         queryResult = dbCursor.fetchall()
         dbCursor.close()
         return queryResult
