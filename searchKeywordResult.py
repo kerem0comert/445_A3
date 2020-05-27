@@ -2,7 +2,6 @@
 import os
 import cgi
 import random
-import http.cookies as Cookie  
 from htmlMethods import *
 from database import *
 #from searchKeywordMain import keywordToSearch
