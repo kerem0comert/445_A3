@@ -9,7 +9,7 @@ from database import *
 form = cgi.FieldStorage()
 keywordToSearch = "Test Position"
 htmlMethods.printHeader("PreviousPositions")
-cityCount = Database().findCityCount()[0][0]
+cityCount = Database().findCityCount()
 cityList = Database().getCities()
 positionList = Database().searchKeywordInternshipPositions(keywordToSearch)
 

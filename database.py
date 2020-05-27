@@ -34,29 +34,37 @@ class Database():
             return 0
         except:
             return 1
+
     def getUsernameFromSessionID(self, incomingSessionId):
+        dbCursor = self.db.cursor()
+        dbCursor.execute("SELECT username FROM SOFTWARECOMPANY WHERE sessionID = ?", (incomingSessionId))
+        queryResult = dbCursor.fetchall()
+        dbCursor.close()
         try:
-            username = self.db.execute("SELECT username FROM SOFTWARECOMPANY WHERE sessionID = ?", (incomingSessionId))
-            return username[0]
-        except:
-            return None
+            queryTuple = queryResult[0]
+            return queryTuple[0]
+        except: return None
 
     def postNewInternship(self, insertDetails):
         # insertDetails -> (id,name,details,name,expectations,deadline) 
         try:
-            try: 
-                maxTuple = self.db.execute('SELECT MAX(id) FROM INTERNSHIPPPOSITION')
-                maxID = maxTuple[0]
+            dbCursor = self.db.cursor()
+            dbCursor.execute("SELECT MAX(id) FROM INTERNSHIPPPOSITION")
+            queryResult = dbCursor.fetchall()
+            dbCursor.close()
+            try:
+                queryTuple = queryResult[0]
+                maxID = queryTuple[0]
             except: maxID = 0 #the table was empty
             
-
             newID = maxID + 1
+
             self.db.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) 
                             VALUES (CURRENT_DATE, ?, ?, ?, ?, ?, ?);''', (insertDetails[0],insertDetails[1],insertDetails[2],insertDetails[3],insertDetails[4],insertDetails[5],))
             self.db.commit()
             return 0
         except: 
-            return 1 
+            return 1
 
     def ListInternshipPositions(self): # NEED TO SPLIT THIS INTO SEPERATE QUERIES FOR EACH CITIES*****************************
         dbCursor = self.db.cursor()
@@ -98,7 +106,10 @@ class Database():
         dbCursor.execute("SELECT COUNT ( DISTINCT cityCode ), cityName FROM CITY")
         queryResult = dbCursor.fetchall()
         dbCursor.close()
-        return queryResult
+        try:
+            queryTuple = queryResult[0]
+            return queryTuple[0]
+        except: return 0
 
     def findInternshipCity(self): # NEED TO SPLIT THIS INTO SEPERATE QUERIES FOR EACH CITIES*****************************
         dbCursor = self.db.cursor()
