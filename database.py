@@ -90,7 +90,7 @@ class Database():
 
     def printCompany(self,companyUsername):
         dbCursor = self.db.cursor()
-        dbCursor.execute("SELECT s.name,s.email,s.telephone,s.website,c.cityName,s.address FROM SOFTWARECOMPANY s,CITY c WHERE c.cityCode = s.cityNo AND s.username = ?",(companyUsername,))
+        dbCursor.execute("SELECT s.name,s.email,s.telephone,s.website,c.cityName,s.address FROM SOFTWARECOMPANY s,CITY c, INTERNSHIPPOSITION i WHERE c.cityCode = s.cityNo AND i.companyUsername = s.username AND i.companyUsername = ?",(companyUsername,))
         queryResult = dbCursor.fetchall()
         dbCursor.close()
         return queryResult
