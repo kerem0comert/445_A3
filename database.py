@@ -87,12 +87,16 @@ class Database():
         dbCursor.close()
         return queryResult
     
-    def printCompany(self,companyName):
+
+    def printCompany(self,companyUsername):
         dbCursor = self.db.cursor()
-        dbCursor.execute("SELECT i.name,i.email,i.telephone,i.website,c.cityName,i.address FROM INTERNSHIPPOSITION i,CITY c WHERE c.cityCode = i.cityNo, name = ?",(companyName),)
+        dbCursor.execute("SELECT s.name,s.email,s.telephone,s.website,c.cityName,s.address FROM SOFTWARECOMPANY s,CITY c WHERE c.cityCode = s.cityNo AND s.username = ?",(companyUsername,))
         queryResult = dbCursor.fetchall()
         dbCursor.close()
         return queryResult
+    
+
+        
 
     def getCities(self):
         dbCursor = self.db.cursor()
@@ -120,7 +124,7 @@ class Database():
 
     def ListInternshipPositionsBycity(self): # NEED TO SPLIT THIS INTO SEPERATE QUERIES FOR EACH CITIES*****************************
         dbCursor = self.db.cursor()
-        dbCursor.execute("SELECT s.name, i.name, i.details, i.expectations, i.deadline, c.cityName FROM INTERNSHIPPOSITION i, SOFTWARECOMPANY s, CITY c WHERE i.companyUsername=s.username AND c.cityCode=s.CityNo")
+        dbCursor.execute("SELECT s.username, s.name, i.name, i.details, i.expectations, i.deadline, c.cityName FROM INTERNSHIPPOSITION i, SOFTWARECOMPANY s, CITY c WHERE i.companyUsername=s.username AND c.cityCode=s.CityNo")
         queryResult = dbCursor.fetchall()
         dbCursor.close()
         return queryResult

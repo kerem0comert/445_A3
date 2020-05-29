@@ -32,13 +32,13 @@ for city in cityList:
     </tr>""" % cityName)
 
     for position in positionList:
-        if(position[5] == cityName):
+        if(position[6] == cityName):
             print("""<tr>""")
-            print("""<td>%s</td>""" % position[0])
-            print("""<td>%s</td>""" % position[1])
+            print('<td><a href="companydetails.py?company=%s">%s</a></td>'%(position[0], position[1]))
             print("""<td>%s</td>""" % position[2])
             print("""<td>%s</td>""" % position[3])
             print("""<td>%s</td>""" % position[4])
+            print("""<td>%s</td>""" % position[5])
             print("""<tr>""")
             checkFlag = 1
     if not checkFlag:
