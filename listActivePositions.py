@@ -6,7 +6,6 @@ from htmlMethods import *
 from database import *
 
 form = cgi.FieldStorage()
-
 htmlMethods.printHeader("PreviousPositions")
 cityCount = Database().findCityCount()
 cityList = Database().getCities()
@@ -34,7 +33,7 @@ for city in cityList:
     for position in positionList:
         if(position[6] == cityName):
             print("""<tr>""")
-            print('<td><a href="companydetails.py?company=%s">%s</a></td>'%(position[0], position[1]))
+            print('<td><a href="companydetails.py?company='+position[0]+'">'+position[1]+'</a></td>')
             print("""<td>%s</td>""" % position[2])
             print("""<td>%s</td>""" % position[3])
             print("""<td>%s</td>""" % position[4])
