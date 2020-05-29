@@ -37,7 +37,7 @@ class Database():
 
     def getUsernameFromSessionID(self, incomingSessionId):
         dbCursor = self.db.cursor()
-        dbCursor.execute("SELECT username FROM SOFTWARECOMPANY WHERE sessionID = ?", (incomingSessionId))
+        dbCursor.execute("SELECT username FROM SOFTWARECOMPANY WHERE sessionID = ?", (incomingSessionId,))
         queryResult = dbCursor.fetchall()
         dbCursor.close()
         try:

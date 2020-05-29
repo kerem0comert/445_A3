@@ -29,7 +29,7 @@ if not form or not 'register' in form:
 else:
     if "HTTP_COOKIE" in os.environ and "createInternship" in form:
         cookie = Cookie.SimpleCookie(os.environ["HTTP_COOKIE"])
-        sessionID = cookie["Session"].value
+        sessionID = cookie["session"].value
         username = Database().getUsernameFromSessionID(sessionID)
         elementList = ["name", "details", "expectations", "deadline"]
         formList =[]
