@@ -8,8 +8,8 @@ from database import *
 
 form = cgi.FieldStorage()
 
-detailsList = Database().printCompany("1234")
-
+allList = Database().printCompany("1234")
+detailsList = allList[0]
 htmlMethods.printHeader("PreviousPositions")
 htmlMethods.printTableHeader()
 
@@ -17,40 +17,35 @@ checkFlag = 0
 print("""
 <body>
 
-<h2>%s</h2>
+<h2>{}:</h2>
 
-<table>
-<tr>
-    <th>Name</th>
-    <th>Email Name</th>
-    <th>Telephone</th>
-    <th>Website</th>
-    <th>City Name</th>
-    <th>Address</th>
-</tr>""" % "Aselsan")
-
-for detail in detailsList:
-    print("""<tr>""")
-    print("""<td>%s</td>""" % detail[0])
-    print("""<td>%s</td>""" % detail[1])
-    print("""<td>%s</td>""" % detail[2])
-    print("""<td>%s</td>""" % detail[3])
-    print("""<td>%s</td>""" % detail[4])
-    print("""<td>%s</td>""" % detail[5])
-    print("""<tr>""")
-    checkFlag = 1
-if not checkFlag:
-    print("""<tr>""")
-    print("""<td>No Position Available</td>""" )
-    print("""<td> </td>""" )
-    print("""<td> </td>""" )
-    print("""<td> </td>""" )
-    print("""<td> </td>""" )
-    print("""<tr>""")
-print("""
+<table style='width:100%'>
+  <tr>
+    <th>Name:</th>
+    <td>{}</td>
+  </tr>
+  <tr>
+    <th>Email Address:</th>
+    <td>{}</td>
+  </tr>
+  <tr>
+    <th>Telephone number:</th>
+    <td>{}</td>
+  </tr>
+  <tr>
+    <th>Website:</th>
+    <td>{}</td>
+  </tr>
+  <tr>
+    <th>City:</th>
+    <td>{}</td>
+  </tr>
+  <tr>
+    <th>Postal Address:</th>
+    <td>{}</td>
+  </tr>
 </table>
-
-</body>""")
+</body>""".format(detailsList[0],detailsList[0],detailsList[1], detailsList[2], detailsList[3], detailsList[4], detailsList[5]))
             
 print("""
     <input type="submit" value="Main Page" onclick="window.location='index.py';"/>""")
