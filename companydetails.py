@@ -7,8 +7,8 @@ from htmlMethods import *
 from database import *
 
 form = cgi.FieldStorage()
-
-allList = Database().printCompany("1234")
+companyUsername = form["company"].value
+allList = Database().printCompany(companyUsername)
 detailsList = allList[0]
 htmlMethods.printHeader("PreviousPositions")
 htmlMethods.printTableHeader()
