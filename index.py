@@ -16,6 +16,7 @@ else:
 
 print("""<input type="submit" value="Search An Internship Position Containing Keyword" onclick="window.location='searchKeywordMain.py';"/>""")
 print("""<input type="submit" value="List All Active Internship Positions" onclick="window.location='listActivePositions.py';"/>""")
+print("""<input type="submit" value="Show Company Details" onclick="window.location='companydetails.py';"/>""")
 
 print("</body>")
 # logout script has been got from https://stackoverflow.com/questions/179355/clearing-all-cookies-with-javascript
