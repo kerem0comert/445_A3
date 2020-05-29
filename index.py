@@ -14,7 +14,6 @@ else:
     print("""<input type="submit" value="Log In" onclick="window.location='login.py';"/>""")
     print("""<input type="submit" value="Register" onclick="window.location='register.py';"/>""")
 
-print("""<input type="submit" value="Search An Internship Position Containing Keyword" onclick="window.location='searchKeywordMain.py';"/>""")
 print("""<input type="submit" value="List All Active Internship Positions" onclick="window.location='listActivePositions.py';"/>""")
 print("""<input type="submit" value="Show Company Details" onclick="window.location='companydetails.py';"/>""")
 

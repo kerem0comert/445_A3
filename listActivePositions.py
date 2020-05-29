@@ -7,10 +7,29 @@ from database import *
 
 form = cgi.FieldStorage()
 
-htmlMethods.printHeader("Active Positions")
+if "search" in form.keys():
+    htmlMethods.printHeader("Search Result")
+else:
+    htmlMethods.printHeader("Active Positions")
+
+print("""<form method='GET' action='listActivePositions.py'>
+            <label for="username">Keyword for search:</label>
+            <input type='text' name='search' required/><br><br>
+            <input type='submit' value='Search' name='do_search' />
+        </form>""")
+
+print("""<input type="submit" value="Main Page" onclick="window.location='index.py';"/>""")            
+
+if "search" in form.keys():
+    print("""<input type="submit" value="Clear Search Results" onclick="window.location='listActivePositions.py';"/>""")
+    print("""<p>Search results for {}</p>""".format(form["search"].value))
+
 cityCount = Database().findCityCount()
 cityList = Database().getCities()
-positionList = Database().ListInternshipPositionsBycity()
+if "search" in form.keys():
+    positionList = Database().searchKeywordInternshipPositions(form["search"].value)
+else:
+    positionList = Database().ListInternshipPositionsBycity()
 
 counter = 0
 htmlMethods.printTableHeader()
@@ -43,7 +62,10 @@ for city in cityList:
             checkFlag = 1
     if not checkFlag:
         print("""<tr>""")
-        print("""<td>No Position Available</td>""" )
+        if "search" in form.keys():
+            print("""<td>No Search Result For This City</td>""" )
+        else:
+            print("""<td>No Position Available</td>""" )
         print("""<td> </td>""" )
         print("""<td> </td>""" )
         print("""<td> </td>""" )
@@ -53,8 +75,6 @@ for city in cityList:
     </table>
 
     </body>""")
-            
-print("""<input type="submit" value="Main Page" onclick="window.location='index.py';"/>""")
 
 htmlMethods.endBodyAndHtml()
 
