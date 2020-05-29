@@ -7,7 +7,7 @@ from database import *
 
 form = cgi.FieldStorage()
 
-htmlMethods.printHeader("PreviousPositions")
+htmlMethods.printHeader("Active Positions")
 cityCount = Database().findCityCount()
 cityList = Database().getCities()
 positionList = Database().ListInternshipPositionsBycity()
@@ -54,8 +54,7 @@ for city in cityList:
 
     </body>""")
             
-print("""
-    <input type="submit" value="Main Page" onclick="window.location='index.py';"/>""")
+print("""<input type="submit" value="Main Page" onclick="window.location='index.py';"/>""")
 
 htmlMethods.endBodyAndHtml()
 

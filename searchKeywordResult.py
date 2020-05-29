@@ -4,37 +4,19 @@ import cgi
 import random
 from htmlMethods import *
 from database import *
-#from searchKeywordMain import keywordToSearch
+
 form = cgi.FieldStorage()
-keywordToSearch = "Test Position"
-htmlMethods.printHeader("PreviousPositions")
+
+htmlMethods.printHeader("Search Result")
 cityCount = Database().findCityCount()
-cityList = Database().getCityNames()
-positionList = Database().searchKeywordInternshipPositions(keywordToSearch)
+cityList = Database().getCities()
+positionList = Database().searchKeywordInternshipPositions("an")
 
 counter = 0
-print("""<head>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
-</head>""")
-while(counter < cityCount):
+htmlMethods.printTableHeader()
+for city in cityList:
     checkFlag = 0
-    cityName = cityList[counter][0]
+    cityName = city[1]
     print("""
     <body>
 
@@ -50,16 +32,16 @@ while(counter < cityCount):
     </tr>""" % cityName)
 
     for position in positionList:
-        if(position[5] == cityName):
+        if(position[6] == cityName):
             print("""<tr>""")
-            print("""<td>%s</td>""" % position[0])
-            print("""<td>%s</td>""" % position[1])
+            print('<td><a href="companydetails.py?company='+position[0]+'">'+position[1]+'</a></td>')
             print("""<td>%s</td>""" % position[2])
             print("""<td>%s</td>""" % position[3])
             print("""<td>%s</td>""" % position[4])
+            print("""<td>%s</td>""" % position[5])
             print("""<tr>""")
             checkFlag = 1
-    if(checkFlag<1):
+    if not checkFlag:
         print("""<tr>""")
         print("""<td>No Position Available</td>""" )
         print("""<td> </td>""" )
@@ -71,12 +53,8 @@ while(counter < cityCount):
     </table>
 
     </body>""")
-    counter+=1
             
-print("""
-    <input type="submit" value="Go Back" onclick="window.location='searchKeywordMain.py';"/>""")
-print("""
-    <input type="submit" value="Main Menu" onclick="window.location='index.py';"/>""")
+print("""<input type="submit" value="Main Page" onclick="window.location='index.py';"/>""")
 
 htmlMethods.endBodyAndHtml()
 

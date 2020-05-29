@@ -82,7 +82,7 @@ class Database():
     
     def searchKeywordInternshipPositions(self, keyword): #Test icin ? yerine test position yazdim normalde keyword aramali
         dbCursor = self.db.cursor()
-        dbCursor.execute("SELECT s.name, i.name, i.details, i.expectations, i.deadline, c.cityName FROM INTERNSHIPPOSITION i, SOFTWARECOMPANY s, CITY c WHERE i.companyUsername=s.username AND c.cityCode=s.CityNo AND (i.details LIKE 'Test Position1' OR i.expectations LIKE 'Test Position' OR i.name LIKE 'Test Position') ORDER BY deadline DESC")
+        dbCursor.execute("""SELECT s.username, s.name, i.name, i.details, i.expectations, i.deadline, c.cityName FROM INTERNSHIPPOSITION i, SOFTWARECOMPANY s, CITY c WHERE i.companyUsername=s.username AND c.cityCode=s.CityNo AND (i.details LIKE '%%an%%' OR i.expectations LIKE '%%an%%' OR i.name LIKE '%%an%%') ORDER BY deadline DESC""")
         queryResult = dbCursor.fetchall()
         dbCursor.close()
         return queryResult
@@ -95,8 +95,6 @@ class Database():
         dbCursor.close()
         return queryResult
     
-
-        
 
     def getCities(self):
         dbCursor = self.db.cursor()
