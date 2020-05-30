@@ -29,7 +29,7 @@ cityList = Database().getCities()
 if "search" in form.keys():
     positionList = Database().searchKeywordInternshipPositions(form["search"].value)
 else:
-    positionList = Database().ListInternshipPositionsBycity()
+    positionList = Database().ListInternshipPositionsByCity()
 
 counter = 0
 htmlMethods.printTableHeader()

@@ -34,7 +34,7 @@ connection.execute('''CREATE TABLE INTERNSHIPPOSITION
                        name TEXT NOT NULL,
                        details TEXT NOT NULL,
                        expectations TEXT,
-					   deadline TEXT NOT NULL,
+					   deadline DATE NOT NULL,
                        companyUsername TEXT NOT NULL,
                        FOREIGN KEY (companyUsername) REFERENCES SOFTWARECOMPANY(username) ON UPDATE CASCADE
                        );''')
@@ -48,9 +48,9 @@ connection.execute('''INSERT INTO CITY (cityCode,cityName) VALUES (5, 'Lefke');'
 connection.execute('''INSERT INTO CITY (cityCode,cityName) VALUES (6, 'Lefkosa');''')
 connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('1234','1234', 'google.com', 'Aselsan', 'testmail@gmail.com', '5556667778', 'haha street',1,1);''')
 connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('12345','1234', 'google.com', 'SoykanSan', 'testmail@gmail.com', '5556667778', 'haha street',1,2);''')
-connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (1, 'Testing Engineer', 'nodetail', 'can test stuff', 'tomorrow', 1234);''')
-connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (2, 'Software Intern', 'very detailed', 'graudate', 'tomorrow', 1234);''')
-connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (3, 'Bell Boy', 'nodetail', 'good loking', 'tomorrow', 12345);''')
-connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (4, 'Janitor Intern', 'very detailed', 'no expectations', 'tomorrow', 12345);''')
+connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (1, 'Testing Engineer', 'nodetail', 'can test stuff', date('now', '-1 days'), 1234);''')
+connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (2, 'Software Intern', 'very detailed', 'graudate', date('now'), 1234);''')
+connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (3, 'Bell Boy', 'nodetail', 'good loking', date('now', '+1 days'), 12345);''')
+connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (4, 'Janitor Intern', 'very detailed', 'no expectations', date('now', '+1 days'), 12345);''')
 connection.commit()
 connection.close()

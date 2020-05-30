@@ -66,37 +66,12 @@ class Database():
         except: 
             return 1
 
-    def ListInternshipPositions(self): # NEED TO SPLIT THIS INTO SEPERATE QUERIES FOR EACH CITIES*****************************
-        dbCursor = self.db.cursor()
-        dbCursor.execute("SELECT name,details,expectations,deadline FROM INTERNSHIPPOSITION ORDER BY deadline DESC")
-        queryResult = dbCursor.fetchall()
-        dbCursor.close()
-        return queryResult
-
-    def ListActiveInternshipPositions(self, todayDate): # NEED TO SPLIT THIS INTO SEPERATE QUERIES FOR EACH CITIES*****************************
-        dbCursor = self.db.cursor()
-        dbCursor.execute("SELECT name,details,expectations,deadline FROM INTERNSHIPPOSITION WHERE deadline <= ? ORDER BY deadline DESC",(todayDate),)
-        queryResult = dbCursor.fetchall()
-        dbCursor.close()
-        return queryResult
-    
-    def searchKeywordInternshipPositions(self, keyword):
-        dbCursor = self.db.cursor()
-        dbCursor.execute("""SELECT s.username, s.name, i.name, i.details, i.expectations, i.deadline, c.cityName FROM INTERNSHIPPOSITION i, SOFTWARECOMPANY s, CITY c 
-                            WHERE i.companyUsername=s.username AND c.cityCode=s.CityNo 
-                            AND (c.cityName LIKE '%%{}%%' OR s.name LIKE '%%{}%%' OR i.details LIKE '%%{}%%' OR i.expectations LIKE '%%{}%%' OR i.name LIKE '%%{}%%') ORDER BY deadline DESC""".format(keyword,keyword,keyword,keyword,keyword))
-        queryResult = dbCursor.fetchall()
-        dbCursor.close()
-        return queryResult
-    
-
     def printCompany(self,companyUsername):
         dbCursor = self.db.cursor()
         dbCursor.execute("SELECT s.name,s.email,s.telephone,s.website,c.cityName,s.address FROM SOFTWARECOMPANY s,CITY c, INTERNSHIPPOSITION i WHERE c.cityCode = s.cityNo AND i.companyUsername = s.username AND i.companyUsername = ?",(companyUsername,))
         queryResult = dbCursor.fetchall()
         dbCursor.close()
         return queryResult
-    
 
     def getCities(self):
         dbCursor = self.db.cursor()
@@ -122,18 +97,18 @@ class Database():
             return queryTuple[0]
         except: return 0
 
-    def findInternshipCity(self): # NEED TO SPLIT THIS INTO SEPERATE QUERIES FOR EACH CITIES*****************************
+    def ListInternshipPositionsByCity(self): # NEED TO SPLIT THIS INTO SEPERATE QUERIES FOR EACH CITIES*****************************
         dbCursor = self.db.cursor()
-        dbCursor.execute("SELECT DISTINCT c.cityName FROM INTERNSHIPPOSITION i, SOFTWARECOMPANY s, CITY c WHERE i.companyUsername=s.username AND c.cityCode=s.CityNo")
+        dbCursor.execute("SELECT s.username, s.name, i.name, i.details, i.expectations, i.deadline, c.cityName FROM INTERNSHIPPOSITION i, SOFTWARECOMPANY s, CITY c WHERE i.companyUsername=s.username AND c.cityCode=s.CityNo AND i.deadline > datetime('now', '-1 days')")
         queryResult = dbCursor.fetchall()
         dbCursor.close()
         return queryResult
 
-    def ListInternshipPositionsBycity(self): # NEED TO SPLIT THIS INTO SEPERATE QUERIES FOR EACH CITIES*****************************
+    def searchKeywordInternshipPositions(self, keyword):
         dbCursor = self.db.cursor()
-        dbCursor.execute("SELECT s.username, s.name, i.name, i.details, i.expectations, i.deadline, c.cityName FROM INTERNSHIPPOSITION i, SOFTWARECOMPANY s, CITY c WHERE i.companyUsername=s.username AND c.cityCode=s.CityNo")
+        dbCursor.execute("""SELECT s.username, s.name, i.name, i.details, i.expectations, i.deadline, c.cityName FROM INTERNSHIPPOSITION i, SOFTWARECOMPANY s, CITY c 
+                            WHERE i.companyUsername=s.username AND c.cityCode=s.CityNo AND i.deadline > datetime('now', '-1 days')
+                            AND (c.cityName LIKE '%%{}%%' OR s.name LIKE '%%{}%%' OR i.details LIKE '%%{}%%' OR i.expectations LIKE '%%{}%%' OR i.name LIKE '%%{}%%' OR i.deadline LIKE '%%{}%%') ORDER BY deadline DESC""".format(keyword,keyword,keyword,keyword,keyword, keyword))
         queryResult = dbCursor.fetchall()
         dbCursor.close()
         return queryResult
-
-    
