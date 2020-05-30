@@ -97,6 +97,12 @@ class Database():
         dbCursor.close()
         return queryResult
     
+    def getUsernameFromCompanyName(self, companyName):
+        dbCursor = self.db.cursor()
+        dbCursor.execute("SELECT s.username FROM SOFTWARECOMPANY s WHERE s.name = ?", (companyName,))
+        queryResult = dbCursor.fetchall()
+        dbCursor.close()
+        return queryResult
 
     def getCities(self):
         dbCursor = self.db.cursor()
@@ -128,5 +134,10 @@ class Database():
         queryResult = dbCursor.fetchall()
         dbCursor.close()
         return queryResult
+    
+    
+
+#db = Database()
+#db.getUsernameFromCompanyName("Aselsan")
 
     

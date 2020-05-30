@@ -8,8 +8,10 @@ class htmlMethods():
             "-//W3C//DTD XHTML 1.0 Strict//EN"
             "DTD/xhtml1-strict.dtd">
         <html xmlns = "http://www.w3.org/1999/xhtml">
-        <head><title>%s</title><link rel="stylesheet" type="text/css" href="styles.css"></head>
-        <body>""" % title)
+        <head>
+        <title>%s</title><link rel="stylesheet" type="text/css" href="styles.css"></head>
+                <body>""" % title)
+        
 
     @staticmethod
     def endBodyAndHtml():
