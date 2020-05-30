@@ -47,31 +47,31 @@ connection.execute('''INSERT INTO CITY (cityCode,cityName) VALUES (4, 'Iskele');
 connection.execute('''INSERT INTO CITY (cityCode,cityName) VALUES (5, 'Lefke');''')
 connection.execute('''INSERT INTO CITY (cityCode,cityName) VALUES (6, 'Lefkosa');''')
 
-connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp1','1234', 'google.com', 'Gazi1', 'testmail@gmail.com', '5556667778', 'haha street',1,1);''')
-connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp2','1234', 'google.com', 'Gazi2', 'testmail@gmail.com', '5556667778', 'haha street',1,1);''')
-connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp3','1234', 'google.com', 'GirneBeton', 'testmail@gmail.com', '5556667778', 'haha street',1,2);''')
-connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp4','1234', 'google.com', 'GirneGaz', 'testmail@gmail.com', '5556667778', 'haha street',1,2);''')
-connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp5','1234', 'google.com', 'Guzelyurt1', 'testmail@gmail.com', '5556667778', 'haha street',1,3);''')
-connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp6','1234', 'google.com', 'Guzelyurt2', 'testmail@gmail.com', '5556667778', 'haha street',1,3);''')
-connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp7','1234', 'google.com', 'Iskele1', 'testmail@gmail.com', '5556667778', 'haha street',1,4);''')
-connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp8','1234', 'google.com', 'Iskele2', 'testmail@gmail.com', '5556667778', 'haha street',1,4);''')
-connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp9','1234', 'google.com', 'LefkeGaz', 'testmail@gmail.com', '5556667778', 'haha street',1,5);''')
-connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp10','1234', 'google.com', 'LefkeBoru', 'testmail@gmail.com', '5556667778', 'haha street',1,5);''')
-connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp11','1234', 'google.com', 'Lefkosa1', 'testmail@gmail.com', '5556667778', 'haha street',1,6);''')
-connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp12','1234', 'google.com', 'Lefkosa2', 'testmail@gmail.com', '5556667778', 'haha street',1,6);''')
+connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp1','1234', 'google.com', 'WaffleWorld', 'testmail@gmail.com', '5556667778', 'haha street',1,1);''')
+connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp2','5234', 'facebook.com', 'Moonbucks', 'testmail@gmail.com', '5556667778', 'goktasi street',1,1);''')
+connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp3','2123', 'twitter.com', 'GirneBeton', 'testmail@gmail.com', '5556667778', 'aa street',1,2);''')
+connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp4','2645', 'wikipedia.com', 'GirneGaz', 'testmail@gmail.com', '5556667778', 'istiklal caddesi',1,2);''')
+connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp5','3489', 'foggle.com', 'DonanimHaber', 'testmail@gmail.com', '5556667778', 'aksama dogru',1,3);''')
+connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp6','3488', 'toggle.com', 'TeknoSA', 'testmail@gmail.com', '5556667778', 'azalinca yagmur',1,3);''')
+connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp7','9077', 'metu.com', 'Iskele1', 'testmail@gmail.com', '5556667778', 'kiz kulesi',1,4);''')
+connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp8','4532', 'hetu.com', 'Iskele2', 'testmail@gmail.com', '5556667778', 've adalar',1,4);''')
+connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp9','4850', 'linkedin.com', 'LefkeGaz', 'testmail@gmail.com', '5556667778', 'haha street',1,5);''')
+connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp10','3321', 'mynet.com', 'LefkeBoru', 'testmail@gmail.com', '5556667778', 'haha street',1,5);''')
+connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp11','3344', 'wwwa.com', 'SpaceX', 'testmail@gmail.com', '5556667778', 'haha street',1,6);''')
+connection.execute('''INSERT INTO SOFTWARECOMPANY (username,password,website,name,email,telephone,address,sessionId,cityNo) VALUES ('comp12','3355', 'wwe.com', 'NASA', 'testmail@gmail.com', '5556667778', 'haha street',1,6);''')
 
 connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (1, 'Testing Engineer', 'nodetail', 'can test stuff', date('now', '-1 days'), 'comp1');''')
 connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (2, 'Software Intern', 'very detailed', 'graudate', date('now'),  'comp1');''')
 connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (3, 'Bell Boy', 'nodetail', 'good loking', date('now', '+1 days'),  'comp1');''')
 
 
-connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (4, 'Testing Engineer', 'nodetail', 'can test stuff', date('now', '-1 days'), 'comp2');''')
-connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (5, 'Software Intern', 'very detailed', 'graudate', date('now'), 'comp2');''')
-connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (6, 'Bell Boy', 'nodetail', 'good loking', date('now', '+1 days'), 'comp2');''')
+connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (4, 'Astronaut', 'nodetail', 'Should be cool', date('now', '-1 days'), 'comp2');''')
+connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (5, 'Present President', 'aaa', 'graudate', date('now'), 'comp2');''')
+connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (6, 'KungFu Fighter', 'nodetail', 'good loking', date('now', '+2 days'), 'comp2');''')
 
 
-connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (7, 'Testing Engineer', 'nodetail', 'can test stuff', date('now', '-1 days'), 'comp3');''')
-connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (8, 'Software Intern', 'very detailed', 'graudate', date('now'), 'comp3');''')
+connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (7, 'Football Player', 'nodetail', 'messi', date('now', '-1 days'), 'comp3');''')
+connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (8, 'Tennis Player', 'very detailed', 'graudate', date('now'), 'comp3');''')
 connection.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) VALUES (9, 'Bell Boy', 'nodetail', 'good loking', date('now', '+1 days'), 'comp3');''')
 
 
