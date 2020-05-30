@@ -37,8 +37,8 @@ elif 'login' in form and 'username' in form.keys() and 'pwd' in form.keys():
    sessionID = Database().login(form["username"].value, form["pwd"].value)
    if sessionID == 0:
       htmlMethods.printHeader("Login Failed!")
-      print("<p>Login Failed!</p>")
-      print("<p>Incorrect username and password</p>")
+      print("<h1>Login Failed!</h1>")
+      print("<h1>Incorrect username and password</h1>")
       print("""<input type="submit" value="Go back" onclick="window.location='login.py';"/>""")
       htmlMethods.endBodyAndHtml()
    else:
@@ -47,8 +47,8 @@ elif 'login' in form and 'username' in form.keys() and 'pwd' in form.keys():
       isLoginNotSuccessful = Database().updateSessionID(form["username"].value, sessionID)
       if isLoginNotSuccessful:
          htmlMethods.printHeader("Login Failed!")
-         print("<p>Login Failed!</p>")
-         print("<p>Something went wrong</p>")
+         print("<h1>Login Failed!</h1>")
+         print("<h1>Something went wrong</h1>")
          print("""<input type="submit" value="Go back" onclick="window.location='login.py';"/>""")
          htmlMethods.endBodyAndHtml()
       else:
@@ -63,7 +63,7 @@ elif 'login' in form and 'username' in form.keys() and 'pwd' in form.keys():
          htmlMethods.endBodyAndHtml()
 else:
    htmlMethods.printHeader("Login")
-   print("""<p>Login to system</p>
+   print("""<h1>Login to system</h1>
         <form method='POST' action='login.py'>
             <label for="username">Username:</label>
             <input type='text' name='username' required/><br><br>

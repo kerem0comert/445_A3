@@ -6,7 +6,7 @@ from database import *
 import http.cookies as Cookie
 
 htmlMethods.printHeader("North Cyprus SW Interns")
-print("""<p>Welcome to Kalkanli Internship System!</p>""")
+print("""<h1>Welcome to Kalkanli Internship System!</h1>""")
 
 if "HTTP_COOKIE" in os.environ:
     cookie = Cookie.SimpleCookie(os.environ["HTTP_COOKIE"])

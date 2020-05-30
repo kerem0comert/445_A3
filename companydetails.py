@@ -49,16 +49,16 @@ if "company" in form.keys():
   </table>
   </body>""".format(detailsList[0],detailsList[0],detailsList[1], detailsList[2], detailsList[3], detailsList[4], detailsList[5]))
 else:
-  print ("""<p>Select the company name you want to search:<br /></p> 
+  print ("""<h1>Select the company name you want to search:<br /></h1> 
     <form method = "get" action = "companydetails.py"> 
-      <p> 
+      <h1> 
       <select name="company" id="company">""")
   for company in companies:
     print("""<option value="{}">{}</option>""".format(company[0], company[3]))
   print("""
             </select><br><br>
       <input type = "submit" value = "Get Company Details" />
-      </p> 
+      </h1> 
     </form>""")
 
           

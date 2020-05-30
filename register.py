@@ -10,7 +10,7 @@ cityList = Database().getCities()
 
 if not form or not 'register' in form:
     htmlMethods.printHeader("Register")
-    print("""<p>Register to system</p>
+    print("""<h1>Register to system</h1>
         <form method='POST' action='register.py'>
             <label for="username">Username:</label>
             <input type='text' name='username' required/><br><br>
@@ -47,14 +47,14 @@ else:
 
     if isNotSuccessful:
         htmlMethods.printHeader("Register Failed!")
-        print("<p>Register Failed!</p>")
-        print("<p>Something went wrong</p>")
+        print("<h1>Register Failed!</h1>")
+        print("<h1>Something went wrong</h1>")
         print("""<input type="submit" value="Go back" onclick="window.location='register.py';"/>""")
         htmlMethods.endBodyAndHtml()
     else:
         htmlMethods.printHeader("Register Successful!")
-        print("<p>You have registered successfully!</p>")
-        print("<p>What do you want now?</p>")
+        print("<h1>You have registered successfully!</h1>")
+        print("<h1>What do you want now?</h1>")
         print("""<input type="submit" value="Main Page" onclick="window.location='index.py';"/>""")
         print("""<input type="submit" value="Login" onclick="window.location='login.py';"/>""")
         htmlMethods.endBodyAndHtml()

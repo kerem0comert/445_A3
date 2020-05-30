@@ -22,7 +22,7 @@ print("""<input type="submit" value="Main Page" onclick="window.location='index.
 
 if "search" in form.keys():
     print("""<input type="submit" value="Clear Search Results" onclick="window.location='listActivePositions.py';"/>""")
-    print("""<p>Search results for {}</p>""".format(form["search"].value))
+    print("""<h1>Search results for {}</h1>""".format(form["search"].value))
 
 cityCount = Database().findCityCount()
 cityList = Database().getCities()
