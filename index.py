@@ -2,11 +2,21 @@
 import os
 import cgi
 from htmlMethods import htmlMethods
+from database import *
+import http.cookies as Cookie
 
 htmlMethods.printHeader("North Cyprus SW Interns")
 print("""<p>Welcome to Kalkanli Internship System!</p>""")
 
 if "HTTP_COOKIE" in os.environ:
+    cookie = Cookie.SimpleCookie(os.environ["HTTP_COOKIE"])
+    sessionID = cookie["session"].value
+    companyName = Database().getCompanyNameFromSessionID(sessionID)
+    companyUsername = Database().getUsernameFromSessionID(sessionID)
+    print("User Name: " + companyUsername)
+    print("""<br><br>""")
+    print("Company: " + companyName)
+    print("""<br><br>""")
     print("""<form method='POST' action='login.py'>
                 <input type='submit' value='Log out' name='logout' />
             </form>""")
