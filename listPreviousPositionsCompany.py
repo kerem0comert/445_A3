@@ -4,57 +4,82 @@ import cgi
 import random
 from htmlMethods import *
 from database import *
+import http.cookies as Cookie
 
 form = cgi.FieldStorage()
+cookie = Cookie.SimpleCookie(os.environ["HTTP_COOKIE"])
+sessionID = cookie["session"].value
+companyName = Database().getCompanyNameFromSessionID(sessionID)
+companyUsername = Database().getUsernameFromSessionID(sessionID)
 
-htmlMethods.printHeader("PreviousPositions")
-positionList = Database().ListInternshipPositions()
-print("""<head>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+if "search" in form.keys():
+    htmlMethods.printHeader("Search Result")
+else:
+    htmlMethods.printHeader("Previous Positions")
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
+print("""<form method='GET' action='listPreviousPositionsCompany.py'>
+            <label for="search">Keyword for search:</label>
+            <input type='text' name='search' required/><br><br>
+            <input type='submit' value='Search' name='do_search' />
+        </form>""")
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
-</head>
-<body>
+print("""<input type="submit" value="Main Page" onclick="window.location='index.py';"/>""")            
 
-<h2>Previously Posted Internship Positions</h2>
+if "search" in form.keys():
+    print("""<input type="submit" value="Clear Search Results" onclick="window.location='listPreviousPositionsCompany.py';"/>""")
+    print("""<p>Search results for {}</p>""".format(form["search"].value))
 
-<table>
-  <tr>
-    <th>Position Name</th>
-    <th>Description</th>
-    <th>Expectations</th>
-    <th>Deadline</th>
-  </tr>""")
+print("""<p>All Internship Positions created by """ + companyName +"""</p>""")
 
-for position in positionList:
-    print("""<tr>""")
-    print("""<td>%s</td>""" % position[0])
-    print("""<td>%s</td>""" % position[1])
-    print("""<td>%s</td>""" % position[2])
-    print("""<td>%s</td>""" % position[3])
-    print("""<tr>""")
+cityCount = Database().findCityCount()
+cityList = Database().getCities()
+if "search" in form.keys():
+    positionList = Database().ListInternshipPositionsByCity(form["search"].value, previous=True, companyUsername=companyUsername)
+else:
+    positionList = Database().ListInternshipPositionsByCity(previous=True, companyUsername=companyUsername)
 
-print("""
-</table>
+counter = 0
+htmlMethods.printTableHeader()
+for city in cityList:
+    checkFlag = 0
+    cityName = city[1]
+    print("""
+    <body>
 
-</body>""")
-            
-print("""
-    <input type="submit" value="Main Page" onclick="window.location='index.py';"/>""")
+    <h2>%s</h2>
+
+    <table>
+    <tr>
+        <th>Position Name</th>
+        <th>Description</th>
+        <th>Expectations</th>
+        <th>Deadline</th>
+    </tr>""" % cityName)
+
+    for position in positionList:
+        if(position[6] == cityName):
+            print("""<tr>""")
+            print("""<td>%s</td>""" % position[2])
+            print("""<td>%s</td>""" % position[3])
+            print("""<td>%s</td>""" % position[4])
+            print("""<td>%s</td>""" % position[5])
+            print("""<tr>""")
+            checkFlag = 1
+    if not checkFlag:
+        print("""<tr>""")
+        if "search" in form.keys():
+            print("""<td>No Search Result For This City</td>""" )
+        else:
+            print("""<td>No Position Available</td>""" )
+        print("""<td> </td>""" )
+        print("""<td> </td>""" )
+        print("""<td> </td>""" )
+        print("""<td> </td>""" )
+        print("""<tr>""")
+    print("""
+    </table>
+
+    </body>""")
 
 htmlMethods.endBodyAndHtml()
 

@@ -13,7 +13,7 @@ else:
     htmlMethods.printHeader("Active Positions")
 
 print("""<form method='GET' action='listActivePositions.py'>
-            <label for="username">Keyword for search:</label>
+            <label for="search">Keyword for search:</label>
             <input type='text' name='search' required/><br><br>
             <input type='submit' value='Search' name='do_search' />
         </form>""")
@@ -27,7 +27,7 @@ if "search" in form.keys():
 cityCount = Database().findCityCount()
 cityList = Database().getCities()
 if "search" in form.keys():
-    positionList = Database().searchKeywordInternshipPositions(form["search"].value)
+    positionList = Database().ListInternshipPositionsByCity(form["search"].value)
 else:
     positionList = Database().ListInternshipPositionsByCity()
 

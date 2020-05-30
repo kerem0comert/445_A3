@@ -45,6 +45,16 @@ class Database():
             return queryTuple[0]
         except: return None
 
+    def getCompanyNameFromSessionID(self, incomingSessionId):
+        dbCursor = self.db.cursor()
+        dbCursor.execute("SELECT name FROM SOFTWARECOMPANY WHERE sessionID = ?", (incomingSessionId,))
+        queryResult = dbCursor.fetchall()
+        dbCursor.close()
+        try:
+            queryTuple = queryResult[0]
+            return queryTuple[0]
+        except: return None
+
     def postNewInternship(self, insertDetails):
         # insertDetails -> (id,name,details,name,expectations,deadline) 
         try:
@@ -87,7 +97,7 @@ class Database():
         dbCursor.close()
         return queryResult
     
-    def findCityCount(self): # NEED TO SPLIT THIS INTO SEPERATE QUERIES FOR EACH CITIES*****************************
+    def findCityCount(self):
         dbCursor = self.db.cursor()
         dbCursor.execute("SELECT COUNT ( DISTINCT cityCode ), cityName FROM CITY")
         queryResult = dbCursor.fetchall()
@@ -97,18 +107,17 @@ class Database():
             return queryTuple[0]
         except: return 0
 
-    def ListInternshipPositionsByCity(self): # NEED TO SPLIT THIS INTO SEPERATE QUERIES FOR EACH CITIES*****************************
+    def ListInternshipPositionsByCity(self, keyword = None, previous = False, companyUsername = None):
+        queryString = """SELECT s.username, s.name, i.name, i.details, i.expectations, i.deadline, c.cityName FROM INTERNSHIPPOSITION i, SOFTWARECOMPANY s, CITY c 
+                            WHERE i.companyUsername=s.username AND c.cityCode=s.CityNo"""
+        if not previous:
+            queryString += """ AND i.deadline > datetime('now', '-1 days')"""
+        if companyUsername:
+            queryString += """ AND i.companyUsername='""" + companyUsername + """'"""
+        if keyword:
+            queryString += """ AND (c.cityName LIKE '%%{}%%' OR s.name LIKE '%%{}%%' OR i.details LIKE '%%{}%%' OR i.expectations LIKE '%%{}%%' OR i.name LIKE '%%{}%%' OR i.deadline LIKE '%%{}%%') ORDER BY deadline DESC""".format(keyword,keyword,keyword,keyword,keyword, keyword)  
         dbCursor = self.db.cursor()
-        dbCursor.execute("SELECT s.username, s.name, i.name, i.details, i.expectations, i.deadline, c.cityName FROM INTERNSHIPPOSITION i, SOFTWARECOMPANY s, CITY c WHERE i.companyUsername=s.username AND c.cityCode=s.CityNo AND i.deadline > datetime('now', '-1 days')")
-        queryResult = dbCursor.fetchall()
-        dbCursor.close()
-        return queryResult
-
-    def searchKeywordInternshipPositions(self, keyword):
-        dbCursor = self.db.cursor()
-        dbCursor.execute("""SELECT s.username, s.name, i.name, i.details, i.expectations, i.deadline, c.cityName FROM INTERNSHIPPOSITION i, SOFTWARECOMPANY s, CITY c 
-                            WHERE i.companyUsername=s.username AND c.cityCode=s.CityNo AND i.deadline > datetime('now', '-1 days')
-                            AND (c.cityName LIKE '%%{}%%' OR s.name LIKE '%%{}%%' OR i.details LIKE '%%{}%%' OR i.expectations LIKE '%%{}%%' OR i.name LIKE '%%{}%%' OR i.deadline LIKE '%%{}%%') ORDER BY deadline DESC""".format(keyword,keyword,keyword,keyword,keyword, keyword))
+        dbCursor.execute(queryString)
         queryResult = dbCursor.fetchall()
         dbCursor.close()
         return queryResult
