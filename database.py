@@ -56,10 +56,9 @@ class Database():
         except: return None
 
     def postNewInternship(self, insertDetails):
-        # insertDetails -> (id,name,details,name,expectations,deadline) 
         try:
             dbCursor = self.db.cursor()
-            dbCursor.execute("SELECT MAX(id) FROM INTERNSHIPPPOSITION")
+            dbCursor.execute("SELECT MAX(id) FROM INTERNSHIPPOSITION")
             queryResult = dbCursor.fetchall()
             dbCursor.close()
             try:
@@ -70,10 +69,10 @@ class Database():
             newID = maxID + 1
 
             self.db.execute('''INSERT INTO INTERNSHIPPOSITION (id,name,details,expectations,deadline,companyUsername) 
-                            VALUES (CURRENT_DATE, ?, ?, ?, ?, ?, ?);''', (insertDetails[0],insertDetails[1],insertDetails[2],insertDetails[3],insertDetails[4],insertDetails[5],))
+                            VALUES (?, ?, ?, ?, date(?), ?);''', (newID, insertDetails[0],insertDetails[1],insertDetails[2],insertDetails[3],insertDetails[4],))
             self.db.commit()
             return 0
-        except: 
+        except:
             return 1
 
     def printCompany(self,companyUsername):
