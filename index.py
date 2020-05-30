@@ -7,8 +7,6 @@ htmlMethods.printHeader("North Cyprus SW Interns")
 print("""<p>Welcome to Kalkanli Internship System!</p>""")
 print("""        <iframe src="http://gadget.turktakvim.com/" width="155" height="260" scrolling="Auto" frameborder="0"></iframe>
 """)
-print("""<script language="javascript" src="http://ir.sitekodlari.com/gununsozu1.js"></script>""")
-
 if "HTTP_COOKIE" in os.environ:
     print("""<form method='POST' action='login.py'>
                 <input type='submit' value='Log out' name='logout' />
