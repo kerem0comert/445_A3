@@ -104,6 +104,13 @@ class Database():
         queryResult = dbCursor.fetchall()
         dbCursor.close()
         return queryResult
+
+    def getCompanies(self):
+        dbCursor = self.db.cursor()
+        dbCursor.execute("SELECT * FROM SOFTWARECOMPANY")
+        queryResult = dbCursor.fetchall()
+        dbCursor.close()
+        return queryResult
     
     def findCityCount(self): # NEED TO SPLIT THIS INTO SEPERATE QUERIES FOR EACH CITIES*****************************
         dbCursor = self.db.cursor()

@@ -6,6 +6,8 @@ import random
 from htmlMethods import *
 from database import *
 
+companies = Database().getCompanies()
+
 htmlMethods.printHeader("Company Details")
 form = cgi.FieldStorage()
 
@@ -47,11 +49,15 @@ if "company" in form.keys():
   </table>
   </body>""".format(detailsList[0],detailsList[0],detailsList[1], detailsList[2], detailsList[3], detailsList[4], detailsList[5]))
 else:
-  print ("""<p>Enter the company name you want to search:<br /></p> 
+  print ("""<p>Select the company name you want to search:<br /></p> 
     <form method = "get" action = "companydetails.py"> 
       <p> 
-      <input type = "text" name = "company" />
-      <input type = "submit" value = "Search" />
+      <select name="company" id="company">""")
+  for company in companies:
+    print("""<option value="{}">{}</option>""".format(company[0], company[3]))
+  print("""
+            </select><br><br>
+      <input type = "submit" value = "Get Company Details" />
       </p> 
     </form>""")
 
